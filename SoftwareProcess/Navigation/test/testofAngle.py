@@ -19,9 +19,39 @@ try:
 except ValueError as e:
     print(e)
 
+try:
+    print(myAngle.setDegrees('123'))
+except ValueError as e:
+    print(e)
+
 #test of setDegreesAndMunites
 try:
     print(myAngle.setDegreesAndMinutes('0100d01.'))
+except ValueError as e:
+    print(e)
+
+try:
+    print(myAngle.setDegreesAndMinutes('-0100d+01'))
+except ValueError as e:
+    print(e)
+
+try:
+    print(myAngle.setDegreesAndMinutes('0100d-01'))
+except ValueError as e:
+    print(e)
+    
+try:
+    print(myAngle.setDegreesAndMinutes('0100d61'))
+except ValueError as e:
+    print(e)
+
+try:
+    print(myAngle.setDegreesAndMinutes('0100d60'))
+except ValueError as e:
+    print(e)
+
+try:
+    print(myAngle.setDegreesAndMinutes('0100d59'))
 except ValueError as e:
     print(e)
     
@@ -73,8 +103,13 @@ print 'angle3Degrees =', angle3Degrees
 #Attempts to set an invalid value should result
 try:
     invalidAngle = angle2.setDegrees("")
-except ValueError as rasedException:
-    print(rasedException)
+except ValueError as raisedException:
+    print(raisedException)
+
+try:
+    invalidAngle = angle2.setDegreesAndMinutes("")
+except ValueError as raisedException:
+    print(raisedException)
 
 #add
 print 'add:-------------------------'

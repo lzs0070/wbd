@@ -60,6 +60,9 @@ class Angle():
         return self.degrees
     
     def setDegreesAndMinutes(self, myDegrees):
+        if(myDegrees == ""):
+            raise ValueError('Angle.setDegreesAndMinutes(): The input is empty.')
+        
         position = myDegrees.index('d');
         #look for 'd' in myDegrees
         if(position < 0):
