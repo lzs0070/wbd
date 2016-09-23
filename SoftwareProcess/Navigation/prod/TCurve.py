@@ -59,7 +59,8 @@ class TCurve(object):
         base = (1 + (u ** 2) / n)
         exponent = -(n + 1.0) / 2
         result = base ** exponent
-        return result
+        #return result
+        return u
     
     def integrate(self, t, n, f):
         pass

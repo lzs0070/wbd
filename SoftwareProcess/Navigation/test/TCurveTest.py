@@ -230,3 +230,14 @@ class TCurveTest(unittest.TestCase):
         myT = T.TCurve(self.nominalN)
         self.assertAlmostEquals(myT.f(1, 5), 0.578703704)
         
+    
+# 500 integrate
+# Analysis
+#    inputs
+#        t -> float > 0.0, mandatory validated
+#        n -> numeric mandatory validated
+#        f -> result of function f
+#    output
+#        float .GE. 0
+# Happy path
+#        nominal case:    integrate(1) -> 
