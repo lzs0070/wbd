@@ -59,11 +59,54 @@ class TCurve(object):
         base = (1 + (u ** 2) / n)
         exponent = -(n + 1.0) / 2
         result = base ** exponent
-        #return result
+        return result
+    
+    def f2(self, u, n):
         return u
     
-    def integrate(self, t, n, f):
-        pass
+    def f3(self, u, n):
+        return u**2
+    
+    def f4(self, u, n):
+        return u**6
+    
+    def f5(self, u, n):
+        return u**100
+    
+    def integrate(self, t = None, n = None, f):
+        functionName = "TCurve.integrate: "
+        if n == None:
+            raise ValueError(functionName + "missing n")
+        if t == None:
+            raise ValueError(functionName + "missing t")
+        if (not(isinstance(t, float))):
+            raise ValueError(functionName + "invalid t")
+        
+        
+        epsilon = 0.001
+        simpsonOld = 0
+        simpsonNew = t
+        s = 4
+        
+        while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
+            simpsonOld = simpsonNew
+            w = t / s
+            tmp = 0
+            for i in range(0, s):
+                if i == 0 or i == s:
+                    tmp = tmp + f(i * w)
+                else:
+                    if i % 2 == 0:
+                        tmp = tmp + 2*f(i * w)
+                    else:
+                        tmp = tmp + 4*f(i * w)
+            simpsonNew = w/3 * tmp
+            s = s * 2
+            
+        return simpsonNew
+        
+            
+        
         
         
     
