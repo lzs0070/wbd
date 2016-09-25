@@ -73,12 +73,14 @@ class TCurve(object):
     def f5(self, u, n):
         return u**100
     
-    def integrate(self, t, n, f):
+    def integrate(self, t = 1, n = None, f = None):
         functionName = "TCurve.integrate: "
         if n == None:
             raise ValueError(functionName + "missing n")
         if t == None:
             raise ValueError(functionName + "missing t")
+        if f == None:
+            raise ValueError(functionName + "missing f")
         if (not(isinstance(t, float))):
             raise ValueError(functionName + "invalid t")
         

@@ -262,24 +262,31 @@ class TCurveTest(unittest.TestCase):
         self.assertAlmostEquals(myT.integrate(1.0, self.nominalN, myT.f5), 1.0/101, 3)
          
 # Sad path      
-#     def test500_110_ShouldRaiseExceptionOnNonN(self):
-#         expectedString = "TCurve.integrate" 
-#         myT = T.TCurve(self.nominalN)
-#         with self.assertRaises(ValueError) as context:
-#             myT.integrate(myT.f, t = 1)
-#         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
-#         
-#     def test500_120_ShouldRaiseExceptionOnNonT(self):
-#         expectedString = "TCurve.integrate" 
-#         myT = T.TCurve(self.nominalN)
-#         with self.assertRaises(ValueError) as context:
-#             myT.integrate(myT.f, n = self.nominalN)
-#         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
-#     
-#     def test500_130_ShouldRaiseExceptionOnNonfloatT(self):
-#         expectedString = "TCurve.integrate" 
-#         myT = T.TCurve(self.nominalN)
-#         with self.assertRaises(ValueError) as context:
-#             myT.integrate(myT.f, t = 1)
-#         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+    def test500_110_ShouldRaiseExceptionOnNonN(self):
+        expectedString = "TCurve.integrate" 
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.integrate(t = self.nominalT, f = myT.f)
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+          
+    def test500_120_ShouldRaiseExceptionOnNonT(self):
+        expectedString = "TCurve.integrate" 
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.integrate(n = self.nominalN, f = myT.f)
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+        
+    def test500_130_ShouldRaiseExceptionOnNonF(self):
+        expectedString = "TCurve.integrate" 
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.integrate(t = self.nominalT, n = self.nominalN)
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+      
+    def test500_140_ShouldRaiseExceptionOnNonfloatT(self):
+        expectedString = "TCurve.integrate" 
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.integrate(t = 1, n = self.nominalN, f = myT.f)
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
             
