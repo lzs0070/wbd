@@ -289,4 +289,11 @@ class TCurveTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             myT.integrate(t = 1, n = self.nominalN, f = myT.f)
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+    
+    def test500_150_ShouldRaiseExceptionOnNegativefloatT(self):
+        expectedString = "TCurve.integrate" 
+        myT = T.TCurve(self.nominalN)
+        with self.assertRaises(ValueError) as context:
+            myT.integrate(t = -1.0, n = self.nominalN, f = myT.f)
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
             

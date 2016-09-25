@@ -81,8 +81,10 @@ class TCurve(object):
             raise ValueError(functionName + "missing t")
         if f == None:
             raise ValueError(functionName + "missing f")
-        if (not(isinstance(t, float))):
+        if not(isinstance(t, float)):
             raise ValueError(functionName + "invalid t")
+        if t < 0:
+            raise ValueError(functionName + "negative t")
         
         epsilon = 0.001
         simpsonOld = 0
