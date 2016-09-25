@@ -73,7 +73,7 @@ class TCurve(object):
     def f5(self, u, n):
         return u**100
     
-    def integrate(self, t = None, n = None, f):
+    def integrate(self, t, n, f):
         functionName = "TCurve.integrate: "
         if n == None:
             raise ValueError(functionName + "missing n")
@@ -82,24 +82,23 @@ class TCurve(object):
         if (not(isinstance(t, float))):
             raise ValueError(functionName + "invalid t")
         
-        
         epsilon = 0.001
         simpsonOld = 0
-        simpsonNew = t
+        simpsonNew = epsilon
         s = 4
         
         while (abs((simpsonNew - simpsonOld)/simpsonNew) > epsilon):
             simpsonOld = simpsonNew
             w = t / s
             tmp = 0
-            for i in range(0, s):
+            for i in range(0, s + 1):
                 if i == 0 or i == s:
-                    tmp = tmp + f(i * w)
+                    tmp = tmp + f(i * w, n)
                 else:
                     if i % 2 == 0:
-                        tmp = tmp + 2*f(i * w)
+                        tmp = tmp + 2*f(i * w, n)
                     else:
-                        tmp = tmp + 4*f(i * w)
+                        tmp = tmp + 4*f(i * w, n)
             simpsonNew = w/3 * tmp
             s = s * 2
             
