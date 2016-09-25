@@ -244,6 +244,7 @@ class TCurveTest(unittest.TestCase):
 #        nominal case:    integrate(1) -> 
 # Sad path
 #        none ... x is pre-validated
+
 # # Happy path
     def test500_010_ShouldCalculateF2(self):
         myT = T.TCurve(self.nominalN)
