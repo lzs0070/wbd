@@ -25,6 +25,15 @@ except ValueError as e:
     print(e)
 
 #test of setDegreesAndMunites
+print("setDegreesAndMinutes--------------------------")
+try:
+    print(myAngle.setDegreesAndMinutes('010001.'))
+except ValueError as e:
+    print(e)
+
+mystring = "122d11212"
+print(mystring.index('d'))
+    
 try:
     print(myAngle.setDegreesAndMinutes('0100d01.'))
 except ValueError as e:

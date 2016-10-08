@@ -3,7 +3,7 @@ import math
 class Angle():
     def __init__(self):
         #self.angle = ...       set to 0 degrees 0 minutes
-        self.degrees = 0
+        self.degrees = 0.0
     
     def printDegrees(self):
         #output degrees
@@ -51,45 +51,55 @@ class Angle():
         return 0
     
     
-    def setDegrees(self, myDegrees = 0):
+    def setDegrees(self, myDegrees = 0.0):
         if(not(isinstance(myDegrees, int) or isinstance(myDegrees, float))):
             #if myDegrees is not a number
-            raise ValueError("Angle.setDegrees(): The input is not integer or float number!")
+            raise ValueError("Angle.setDegrees: The input is not integer or float number!")
         else:
-            self.degrees = myDegrees % 360
+            #myDegrees = round(myDegrees, 4)
+            tmp = myDegrees - int(myDegrees)
+            tmp = round(tmp*60, 1)
+            tmp = myDegrees + tmp/60
+            self.degrees = float(myDegrees % 360)
+            #self.degrees = round(self.degrees, 1)
         return self.degrees
     
     def setDegreesAndMinutes(self, myDegrees):
         if(myDegrees == ""):
-            raise ValueError('Angle.setDegreesAndMinutes(): The input is empty.')
+            raise ValueError('Angle.setDegreesAndMinutes: The input is empty.')
         
-        position = myDegrees.index('d');
+        try:
+            position = myDegrees.index('d')
+        except ValueError:
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing separator).')
+        
+        #position = myDegrees.index('d');
         #look for 'd' in myDegrees
         if(position < 0):
             #if there is no 'd' in myDegrees
-            raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (missing separator).')
+            raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing separator).')
         elif(position == 0):
             #if the first character in myDegrees is 'd'
-            raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (missing degrees).')
+            raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing degrees).')
         elif(position == len(myDegrees) - 1):
             #if the last character in myDegrees is 'd'
-            raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (missing minutes).')
+            raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing minutes).')
         else:
             firstStr = myDegrees[0:position]
             secondStr = myDegrees[position+1:len(myDegrees)]
             
             #check Degrees
             if not(self.verifyDegrees(firstStr)):
-                raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (degrees should be an integer).')
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (degrees should be an integer).')
             
             #check minutes
             if self.verifyMinutes(secondStr) == 1:
                 print 'secondstr=', secondStr
-                raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (minutes should be digit).')
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes should be digit).')
             elif self.verifyMinutes(secondStr) == 2:
-                raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (minutes should be positive).')
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes should be positive).')
             elif self.verifyMinutes(secondStr) == 3:
-                raise ValueError('Angle.setDegreesAndMinutes(): The input is not invalid (minutes must have one decimal place).')
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes must have one decimal place).')
             
             #if degrees and minutes are both valid
             self.degrees = int(firstStr)
@@ -104,29 +114,36 @@ class Angle():
                 firstPart = int(firstStr)
                 secondPart = float(secondStr)
             except Exception as e:
-                print'Angle.setDegreesAndMinutes(): The input is not invalid (', e, ').'
+                print'Angle.setDegreesAndMinutes: The input is not invalid (', e, ').'
             '''
         
         return self.degrees 
     
             
-    def add(self, newAngle):
+    def add(self, newAngle = None):
+        if(newAngle == None):
+            raise ValueError('Angle.add: The input is empty.')
+        
         if(not(isinstance(newAngle, Angle))):
-            raise ValueError('Angle.add(): The input is not a valid instance of Angle.')
+            raise ValueError('Angle.add: The input is not a valid instance of Angle.')
         
         self.degrees = (self.degrees + newAngle.degrees) % 360
         return self.degrees
     
-    def subtract(self, newAngle):
+    def subtract(self, newAngle = None):
+        if(newAngle == None):
+            raise ValueError('Angle.subtract: The input is empty.')
         if(not(isinstance(newAngle, Angle))):
-            raise ValueError('Angle.subtract(): The input is not a valid instance of Angle.')
+            raise ValueError('Angle.subtract: The input is not a valid instance of Angle.')
         
         self.degrees = (self.degrees - newAngle.degrees) % 360
         return self.degrees
     
-    def compare(self, newAngle):
+    def compare(self, newAngle = None):
+        if(newAngle == None):
+            raise ValueError('Angle.compare: The input is empty.')
         if(not(isinstance(newAngle, Angle))):
-            raise ValueError('Angle.compare(): The input is not a valid instance of Angle.')
+            raise ValueError('Angle.compare: The input is not a valid instance of Angle.')
         
         if(self.degrees < newAngle.getDegrees()):
             return -1
