@@ -3,7 +3,8 @@ import math
 class Angle():
     def __init__(self):
         #self.angle = ...       set to 0 degrees 0 minutes
-        self.degrees = 0.0
+        self.degrees = 0
+        self.minutes = 0.0
     
     def printDegrees(self):
         #output degrees
@@ -57,12 +58,13 @@ class Angle():
             raise ValueError("Angle.setDegrees: The input is not integer or float number!")
         else:
             #myDegrees = round(myDegrees, 4)
-            tmp = myDegrees - int(myDegrees)
+            tmp = float(myDegrees % 360)
+            self.degrees = int(tmp)
+            tmp = tmp - int(tmp)
             tmp = round(tmp*60, 1)
-            tmp = myDegrees + tmp/60
-            self.degrees = float(myDegrees % 360)
+            self.minutes = tmp
             #self.degrees = round(self.degrees, 1)
-        return self.degrees
+        return self.getDegrees()
     
     def setDegreesAndMinutes(self, myDegrees):
         if(myDegrees == ""):
@@ -71,7 +73,7 @@ class Angle():
         try:
             position = myDegrees.index('d')
         except ValueError:
-                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing separator).')
+            raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (missing separator).')
         
         #position = myDegrees.index('d');
         #look for 'd' in myDegrees
@@ -102,12 +104,12 @@ class Angle():
                 raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes must have one decimal place).')
             
             #if degrees and minutes are both valid
-            self.degrees = int(firstStr)
-            self.portion = float(secondStr)
-            if self.degrees < 0:
-                self.degrees = (self.degrees - self.portion/60) % 360
+            degreePart = int(firstStr)
+            portionPart = float(secondStr)
+            if degreePart < 0:
+                realdegrees = (degreePart - portionPart/60) % 360
             else:
-                self.degrees = (self.degrees + self.portion/60) % 360
+                realdegrees = (degreePart + portionPart/60) % 360
             
             '''
             try:
@@ -117,7 +119,10 @@ class Angle():
                 print'Angle.setDegreesAndMinutes: The input is not invalid (', e, ').'
             '''
         
-        return self.degrees 
+            self.degrees = int(realdegrees)
+            self.minutes = round((realdegrees - self.degrees)*60, 1)
+        
+        return self.getDegrees()
     
             
     def add(self, newAngle = None):
@@ -127,8 +132,10 @@ class Angle():
         if(not(isinstance(newAngle, Angle))):
             raise ValueError('Angle.add: The input is not a valid instance of Angle.')
         
-        self.degrees = (self.degrees + newAngle.degrees) % 360
-        return self.degrees
+#         self.degrees = (self.degrees + newAngle.degrees) % 360
+        tmp = self.getDegrees() + newAngle.getDegrees()
+        self.setDegrees(tmp % 360)
+        return self.getDegrees()
     
     def subtract(self, newAngle = None):
         if(newAngle == None):
@@ -136,8 +143,10 @@ class Angle():
         if(not(isinstance(newAngle, Angle))):
             raise ValueError('Angle.subtract: The input is not a valid instance of Angle.')
         
-        self.degrees = (self.degrees - newAngle.degrees) % 360
-        return self.degrees
+#         self.degrees = (self.degrees - newAngle.degrees) % 360
+        tmp = self.getDegrees() - newAngle.getDegrees()
+        self.setDegrees(tmp % 360)
+        return self.getDegrees()
     
     def compare(self, newAngle = None):
         if(newAngle == None):
@@ -145,21 +154,24 @@ class Angle():
         if(not(isinstance(newAngle, Angle))):
             raise ValueError('Angle.compare: The input is not a valid instance of Angle.')
         
-        if(self.degrees < newAngle.getDegrees()):
+        if(self.getDegrees() < newAngle.getDegrees()):
             return -1
-        elif(self.degrees == newAngle.getDegrees()):
+        elif(self.getDegrees() == newAngle.getDegrees()):
             return 0
         else:
             return 1
         
     
     def getString(self):
-        wholeDegree = self.degrees
-        degreePart = int(wholeDegree)
-        minutePart = wholeDegree - degreePart
-        minutePart = round(minutePart*60, 1)
-        degreeStr = str(degreePart) + 'd' + str(minutePart)
-        return degreeStr
+#         wholeDegree = self.degrees
+#         degreePart = int(wholeDegree)
+#         minutePart = wholeDegree - degreePart
+#         minutePart = round(minutePart*60, 1)
+#         degreeStr = str(degreePart) + 'd' + str(minutePart)
+        tmp = str(self.degrees) + 'd' + str(self.minutes)
+        return tmp
     
     def getDegrees(self):
-        return self.degrees
+        tmp = self.minutes/60
+        tmp = self.degrees + tmp
+        return tmp
