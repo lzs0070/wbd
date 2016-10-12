@@ -8,6 +8,8 @@ import Navigation.prod.Fix as Fix
 import xml
 from _elementtree import XML
 from __builtin__ import file
+import Navigation.prod.Sightings as Sightings
+import Navigation.prod.Angle as Angle
 
 class FixTest(unittest.TestCase):
 
@@ -177,7 +179,7 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             anFix.getSightings()
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
-
+ 
     def test300_040_ShouldRaiseExceptionOnMissingTimeTag(self):
         expectedDiag = self.className + "getSightings:"
         anFix = Fix.Fix()
@@ -185,7 +187,7 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             anFix.getSightings()
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
-
+ 
     def test300_050_ShouldRaiseExceptionOnMissingObservationTag(self):
         expectedDiag = self.className + "getSightings:"
         anFix = Fix.Fix()
@@ -193,7 +195,7 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             anFix.getSightings()
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
-
+ 
     def test300_060_ShouldRaiseExceptionOnInvalidDate(self):
         expectedDiag = self.className + "getSightings:"
         anFix = Fix.Fix()
@@ -201,7 +203,7 @@ class FixTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             anFix.getSightings()
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
-
+  
     def test300_070_ShouldRaiseExceptionOnInvalidTime(self):
         expectedDiag = self.className + "getSightings:"
         anFix = Fix.Fix()
@@ -210,12 +212,177 @@ class FixTest(unittest.TestCase):
             anFix.getSightings()
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_080_ShouldRaiseExceptionOnNegDegreeAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(negative degree).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+ 
+    def test300_090_ShouldRaiseExceptionOnNegMinuteAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(negative minute).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_100_ShouldRaiseExceptionOnNonDigitalDegreeAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(nondigital degree).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_110_ShouldRaiseExceptionOnNonMinuteAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(nondigital minute).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_120_ShouldRaiseExceptionOnOutboundDegreeAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(outbound degree).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_130_ShouldRaiseExceptionOnOutboundMinuteAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(outbound minute).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_140_ShouldRaiseExceptionOnMissingDAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(missing d).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
+    def test300_150_ShouldRaiseExceptionOnRoundingErrorAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(rounding error).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
-   
+    def test300_160_ShouldRaiseExceptionOnTinyAltitude(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(tiny altitude).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_170_ShouldRaiseExceptionOnNegativeHeight(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(negative height).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_180_ShouldRaiseExceptionOnNonDigitalHeight(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(nondigital height).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_190_ShouldRaiseExceptionOnStringTemp(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(string temp).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_200_ShouldRaiseExceptionOnFloatTemp(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(float temp).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_210_ShouldRaiseExceptionOnOutboundTemp(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(outbound temp).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_220_ShouldRaiseExceptionOnStringPressure(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(string pressure).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_230_ShouldRaiseExceptionOnFloatPressure(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(float pressure).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_240_ShouldRaiseExceptionOnOutboundPressure(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(outbound pressure).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_250_ShouldRaiseExceptionOnOtherHorizon(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(other horizon).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+    def test300_260_ShouldRaiseExceptionOnNonLowcaseHorizon(self):
+        expectedDiag = self.className + "getSightings:"
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc(nonlowcase horizon).xml")
+        with self.assertRaises(ValueError) as context:
+            anFix.getSightings()
+        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
+
+# Happy path
+    def test300_310_ShouldAdjustAltitude(self):
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc.xml")
+        anFix.getSightings()
+        Angle1 = Angle.Angle()
+        Angle1.setDegreesAndMinutes('15d01.5')
+        Angle2 = Angle.Angle()
+        Angle2.setDegreesAndMinutes('45d11.9')
+        adjustedAltitudes = anFix.getAdjustedAltitudes()
+        Angle3 = Angle.Angle()
+        Angle3.setDegrees(adjustedAltitudes[0])
+        Angle4 = Angle.Angle()
+        Angle4.setDegrees(adjustedAltitudes[1])
+        self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
+        self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
+        
+        
+        
+        
+        
 

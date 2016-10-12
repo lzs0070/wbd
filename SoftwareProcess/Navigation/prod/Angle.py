@@ -18,7 +18,7 @@ class Angle():
 
         if not(newStr.isdigit()):   #remove the influence of sign when judging whether myStr is digit
             return False
-        elif(type(eval(myStr)) == float):
+        elif(type(eval(myStr)) == float or eval(myStr) < 0 or eval(myStr) >= 90):
             return False
         return True    
             
@@ -49,6 +49,8 @@ class Angle():
             return 2    #should be positive
         elif(math.floor(myNum*10) < myNum*10):
             return 3    #one decimal place
+        elif(myNum >= 60):
+            return 4
         return 0
     
     
@@ -102,6 +104,8 @@ class Angle():
                 raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes should be positive).')
             elif self.verifyMinutes(secondStr) == 3:
                 raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes must have one decimal place).')
+            elif self.verifyMinutes(secondStr) == 4:
+                raise ValueError('Angle.setDegreesAndMinutes: The input is not invalid (minutes out of bound).')
             
             #if degrees and minutes are both valid
             degreePart = int(firstStr)

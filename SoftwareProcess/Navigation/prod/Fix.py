@@ -5,8 +5,12 @@ Created on 10/08/2016
 '''
 
 import Angle
+import Sightings
 import re
 import xml.dom.minidom
+import math
+
+
 
 class Fix():
     '''
@@ -57,54 +61,83 @@ class Fix():
         functionName = "Fix.getSightings:  "
         if (self.sightingFile == None):
             raise ValueError(functionName + "No sighting file has been set.")
-#         try:
-#             f = open(self.sightingFile, 'r')
-#             f.close()
-#         except:
-#             raise ValueError(functionName + "File cannot be opened.")
+
+        anSightings = Sightings.Sightings(self.sightingFile)
+        if(anSightings.setSightings() == False):
+            raise ValueError(functionName + "Errors are encountered in the sighting file.")
+
+        self.adjustedAltitudes = self.adjustAltitudes(anSightings.getSightings())
+        approximateLatitude = "0d0.0"
+        approximateLongitude = "0d0.0"
+        return (approximateLatitude, approximateLongitude) 
+    
+    def adjustAltitudes(self, sightings):
+        adjustedAltitudes = []
+        for i in sightings:
+            adjustedAltitudes.append(self.adjustAltitude(i))
+        return adjustedAltitudes
+    
+    def adjustAltitude(self, sighting):
+        height = float(sighting.getHeight())
+        pressure = float(sighting.getPressure())
+        temperature = float(sighting.getTemperature())
+        observedAltitude = sighting.getObservation()
+        horizon = sighting.getHorizon()
         
-        try:
-            dom = xml.dom.minidom.parse(self.sightingFile)
-            root = dom.documentElement
-        except:
-            print("emp")
-        sightingArray = root.getElementsByTagName('sighting')
-        numSighting = len(sightingArray)
-        order = [numSighting]
-        bodyArray = root.getElementsByTagName('body')
-        numBody = len(bodyArray)
-        timeArray = root.getElementsByTagName('time')
-        numTime = len(timeArray)
-        observationArray = root.getElementsByTagName('observation')
-        numObservation = len(observationArray)
-        dateArray = root.getElementsByTagName('date')
-        numDate = len(dateArray)
-        
-        if (numSighting != numBody or numSighting != numTime
-             or numSighting != numDate or numSighting != numObservation):
-            raise ValueError(functionName + "A mandatory tag is missing.")
-        
-        # test of invalid date
-        rs_date = r'(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)'
-        pattern = re.compile(rs_date)
-        for i in range(0, numDate):
-            myDate = dateArray[i].firstChild.data
-            match = pattern.match(str(myDate))
-            if not(match):
-                raise ValueError(functionName + "Invalid date.")
+        if horizon == 'Natural':
+            dip = (-0.97 * math.sqrt(height)) / 60
+        else:
+            dip = 0
+        c_temp = (temperature - 32)/1.8
+        anAngle = Angle.Angle()
+        anAngle.setDegreesAndMinutes(observedAltitude)
+        refrection = (-0.00452 * pressure)/(273 + c_temp)/(math.tan(anAngle.getDegrees()))
+        adjustedAltitude = anAngle.getDegrees() + dip + refrection
+        adjustedAltitude = round(adjustedAltitude, 1)
+        return adjustedAltitude
 
-        # test of invalid time
-        rs_time = r'^(0\d{1}|1\d{1}|2[0-3]):[0-5]\d{1}:([0-5]\d{1})$'
-        pattern = re.compile(rs_time)
-        for i in range(0, numTime):
-            myTime = timeArray[i].firstChild.data
-            match = pattern.match(str(myTime))
-            if not(match):
-                raise ValueError(functionName + "Invalid time.")
+    def writeAltitude(self):
+        sightings = self.getSightings()
+        numSighting = len(sightings)
+        adjustedAltitudeArr = []
+        orderArr = []
+        for i in range(0, numSighting):
+            sighting = sightings[i]
+            adjustedAltitude = self.adjustAltitude(sighting)
+            adjustedAltitudeArr.append(adjustedAltitude)
+            elements = []
+            elements.append(sighting.getDate())
+            elements.append(sighting.getTime())
+            elements.append(sighting.getBody())
+            elements.append(sighting.getObservation())
+            orderArr.append(elements)
+    
+        sortedOrder = self.sort(orderArr)
+        self.writeLogFile(sortedOrder)
 
-
-
-
-
+    def sort(self, arr):
+        for i in range(0, len(arr) - 1):
+            for j in range(0, len(arr) - 1 - i):
+                if (arr[j][0] > arr[j + 1][0]):
+                    tmp = arr[j]
+                    arr[j] = arr[j + 1]
+                    arr[j + 1] = tmp
+                elif (arr[j][0] == arr[j + 1][0]):
+                    if (arr[j][1] > arr[j + 1][1]):
+                        tmp = arr[j]
+                        arr[j] = arr[j + 1]
+                        arr[j + 1] = tmp
+                    elif (arr[j][1] == arr[j + 1][1]):
+                        if (arr[j][2] > arr[j + 1][2]):
+                            tmp = arr[j]
+                            arr[j] = arr[j + 1]
+                            arr[j + 1] = tmp
+        return arr
+    
+    def getAdjustedAltitudes(self):
+        return self.adjustedAltitudes
+    
+    def writeLogFile(self, arr):
+        pass
         
         
