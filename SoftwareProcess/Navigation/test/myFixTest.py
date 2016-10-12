@@ -375,13 +375,34 @@ class FixTest(unittest.TestCase):
         Angle2.setDegreesAndMinutes('45d11.9')
         adjustedAltitudes = anFix.getAdjustedAltitudes()
         Angle3 = Angle.Angle()
-        Angle3.setDegrees(adjustedAltitudes[0])
+        Angle3.setDegreesAndMinutes(adjustedAltitudes[0])
         Angle4 = Angle.Angle()
-        Angle4.setDegrees(adjustedAltitudes[1])
+        Angle4.setDegreesAndMinutes(adjustedAltitudes[1])
         self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
         self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
         
+    def test300_320_ShouldWriteLogFile(self):
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc.xml")
+        anFix.getSightings()
+        Angle1 = Angle.Angle()
+        Angle1.setDegreesAndMinutes('15d01.5')
+        Angle2 = Angle.Angle()
+        Angle2.setDegreesAndMinutes('45d11.9')
+        adjustedAltitudes = anFix.getAdjustedAltitudes()
+        Angle3 = Angle.Angle()
+        Angle3.setDegreesAndMinutes(adjustedAltitudes[0])
+        Angle4 = Angle.Angle()
+        Angle4.setDegreesAndMinutes(adjustedAltitudes[1])
+        self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
+        self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
         
+    def test300_330_ShouldReturnTuple(self):
+        anFix = Fix.Fix()
+        anFix.setSightingFile("abc.xml")
+        U = anFix.getSightings()
+        V = "0d0.0", "0d0.0"
+        self.assertAlmostEquals(cmp(V, U), 0)
         
         
         
