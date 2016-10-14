@@ -172,7 +172,11 @@ class Angle():
 #         minutePart = wholeDegree - degreePart
 #         minutePart = round(minutePart*60, 1)
 #         degreeStr = str(degreePart) + 'd' + str(minutePart)
-        tmp = str(self.degrees) + 'd' + str(self.minutes)
+        
+        if self.minutes < 10.0:        # meet the requirement of CA02
+            tmp = str(self.degrees) + 'd0' + str(self.minutes)
+        else:
+            tmp = str(self.degrees) + 'd' + str(self.minutes)
         return tmp
     
     def getDegrees(self):

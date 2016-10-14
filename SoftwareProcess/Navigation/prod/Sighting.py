@@ -65,16 +65,10 @@ class Sighting():
         except:
             return False
         
-        rs_date = r'(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)'
-        pattern = re.compile(rs_date)
-        match = pattern.match(str(myDate))
-        if not(match):
+        if not(self.checkDate(str(myDate))):
             return False
            
-        rs_time = r'^(0\d{1}|1\d{1}|2[0-3]):[0-5]\d{1}:([0-5]\d{1})$'
-        pattern = re.compile(rs_time)
-        match = pattern.match(str(myTime))
-        if not(match):
+        if not(self.checkTime(str(myTime))):
             return False
         
         anAngle = Angle.Angle()
@@ -112,6 +106,22 @@ class Sighting():
         self.pressure = str(myPressure)
         self.horizon = str(myHorizon)
         
+        return True
+    
+    def checkDate(self, myDate):
+        rs_date = r'(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|((0[48]|[2468][048]|[3579][26])00))-02-29)'
+        pattern = re.compile(rs_date)
+        match = pattern.match(myDate)
+        if not(match):
+            return False
+        return True
+    
+    def checkTime(self, myTime):
+        rs_time = r'^(0\d{1}|1\d{1}|2[0-3]):[0-5]\d{1}:([0-5]\d{1})$'
+        pattern = re.compile(rs_time)
+        match = pattern.match(myTime)
+        if not(match):
+            return False
         return True
     
     def getBody(self):

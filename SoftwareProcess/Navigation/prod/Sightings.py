@@ -17,7 +17,6 @@ class Sightings():
             dom = xml.dom.minidom.parse(self.sightingFile)
             root = dom.documentElement
             sightingArray = root.getElementsByTagName('sighting')
-            sun = len(sightingArray)
             anSightings = []
             for i in range(0, len(sightingArray)):
                 anSightings.append(Sighting.Sighting(sightingArray[i]))

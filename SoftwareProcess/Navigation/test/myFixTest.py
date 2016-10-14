@@ -30,9 +30,11 @@ class FixTest(unittest.TestCase):
 #      
 #         Happy path
 #             nominal case: Fix()
+#             nominal case: Fix("abc.txt")
 #         Sad path
-#             length of string inputed is 0
-#
+#             input type: digital
+#             input length: 0
+#             input case: unavalible name
 #
 # Sad path
     def test100_910_ShouldRaiseExceptionOnNonString(self):
@@ -74,11 +76,15 @@ class FixTest(unittest.TestCase):
 #             writes "Start of sighting file f.xml" to the log file
 #      
 #         Sad path
-#             empty input
-#             invalid string: empty name, missing ".xml"
-#             the file can not be opened (for whatever reason)
+#             input case: empty input
+#             input length: 0
+#             invalid string: empty name
+#             input case: missing ".xml"
+#             input case: wrong extension name
+#             input case: unavailable file name
+#             input case: nonexist file
 #         Happy path
-#             nominal case: writes "Start of singting file f.xml" to the log file
+#             nominal case: return input value
 
 #    Sad path
     def test200_910_ShouldRaiseExceptionOnEmptyInput(self):
@@ -116,7 +122,6 @@ class FixTest(unittest.TestCase):
             anFix.setSightingFile("abc.txt")
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)])
 
-
     def test200_960_ShouldRaiseExceptionOnUnvaliableFile(self):
         expectedDiag = self.className + "setSightingFile:"
         anFix = Fix.Fix()
@@ -149,11 +154,36 @@ class FixTest(unittest.TestCase):
 #             navigation calculations are written to the log file
 #      
 #         Sad path
-#             no sighting file has been set
-#             errors are encountered in the sighting file
-#             the observed altitude is .LT. 0.1 arc-minutes
+#             input type: no sighting file has been set
+#             file exception: missing date tag
+#             file exception: missing body tag
+#             file exception: missing time tag
+#             file exception: missing obvservation tag
+#             file exception: invalid date
+#             file exception: invalid time
+#             file exception: negative degree
+#             file exception: negative minute
+#             file exception: nondigital degree
+#             file exception: nondigital minute
+#             file exception: degree is out of range
+#             file exception: minute is out of range
+#             file exception: missing d in date
+#             file exception: do not remain 0.1 decimal
+#             file exception: altitude is less than 0d0.1
+#             file exception: negative height
+#             file exception: nondigital height
+#             file exception: temperature is string
+#             file exception: temperature is float
+#             file exception: temperature is out of range
+#             file exception: pressure is string
+#             file exception: pressure is float
+#             file exception: pressure is out of range
+#             file exception: horizon is neither "Natural" nor "Artificial"
+#             file exception: offense the requirement of case-sensitive
+#
 #         Happy path
-#             nominal case: 
+#             adjustment of altitude: whether the answers are 15d01.5 and 45d11.9
+#             return case: whether it returns the right tuple
 
 #    Sad path
 
@@ -381,23 +411,23 @@ class FixTest(unittest.TestCase):
         self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
         self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
         
-    def test300_320_ShouldWriteLogFile(self):
-        anFix = Fix.Fix()
-        anFix.setSightingFile("abc.xml")
-        anFix.getSightings()
-        Angle1 = Angle.Angle()
-        Angle1.setDegreesAndMinutes('15d01.5')
-        Angle2 = Angle.Angle()
-        Angle2.setDegreesAndMinutes('45d11.9')
-        adjustedAltitudes = anFix.getAdjustedAltitudes()
-        Angle3 = Angle.Angle()
-        Angle3.setDegreesAndMinutes(adjustedAltitudes[0])
-        Angle4 = Angle.Angle()
-        Angle4.setDegreesAndMinutes(adjustedAltitudes[1])
-        self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
-        self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
+#     def test300_320_ShouldWriteLogFile(self):
+#         anFix = Fix.Fix()
+#         anFix.setSightingFile("abc.xml")
+#         anFix.getSightings()
+#         Angle1 = Angle.Angle()
+#         Angle1.setDegreesAndMinutes('15d01.5')
+#         Angle2 = Angle.Angle()
+#         Angle2.setDegreesAndMinutes('45d11.9')
+#         adjustedAltitudes = anFix.getAdjustedAltitudes()
+#         Angle3 = Angle.Angle()
+#         Angle3.setDegreesAndMinutes(adjustedAltitudes[0])
+#         Angle4 = Angle.Angle()
+#         Angle4.setDegreesAndMinutes(adjustedAltitudes[1])
+#         self.assertAlmostEquals(Angle1.getDegrees(), Angle3.getDegrees())
+#         self.assertAlmostEquals(Angle2.getDegrees(), Angle4.getDegrees())
         
-    def test300_330_ShouldReturnTuple(self):
+    def test300_320_ShouldReturnTuple(self):
         anFix = Fix.Fix()
         anFix.setSightingFile("abc.xml")
         U = anFix.getSightings()
