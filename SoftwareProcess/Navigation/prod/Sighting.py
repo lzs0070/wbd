@@ -71,32 +71,21 @@ class Sighting():
         if not(self.checkTime(str(myTime))):
             return False
         
-        anAngle = Angle.Angle()
-        try:
-            anAngle.setDegreesAndMinutes(str(myObservation))
-        except:
-            return False
-        if (anAngle.getDegrees() < 0.1/60):
+        if not(self.checkAltitude(str(myObservation))):
             return False
         
-        if not(self.isDecimal(str(myHeight))):
-            return False
-        elif float(str(myHeight)) < 0:
-            return False
-
-        if not(self.isInteger(str(myTemperature))):
-            return False
-        elif int(myTemperature) < -20 or int(myTemperature) > 120:
+        if not(self.checkHeight(str(myHeight))):
             return False
         
-        if not(self.isInteger(str(myPressure))):
+        if not(self.checkTemperature(myTemperature)):
             return False
-        elif int(myPressure) < 100 or int(myPressure) > 1100:
+        
+        if not(self.checkPressure(myPressure)):
             return False
-
-        if str(myHorizon) != 'Artificial' and str(myHorizon) != 'Natural':
+        
+        if not(self.checkHorizon(myHorizon)):
             return False
-
+        
         self.body = str(myBody)
         self.time = str(myTime)
         self.date = str(myDate)
@@ -121,6 +110,42 @@ class Sighting():
         pattern = re.compile(rs_time)
         match = pattern.match(myTime)
         if not(match):
+            return False
+        return True
+    
+    def checkAltitude(self, myAltitude):
+        anAngle = Angle.Angle()
+        try:
+            anAngle.setDegreesAndMinutes(str(myAltitude))
+        except:
+            return False
+        if (anAngle.getDegrees() < 0.1/60):
+            return False
+        return True
+        
+    def checkHeight(self, myHeight):
+        if not(self.isDecimal(str(myHeight))):
+            return False
+        elif float(str(myHeight)) < 0:
+            return False
+        return True
+
+    def checkTemperature(self, myTemperature):
+        if not(self.isInteger(str(myTemperature))):
+            return False
+        elif int(myTemperature) < -20 or int(myTemperature) > 120:
+            return False
+        return True
+    
+    def checkPressure(self, myPressure):
+        if not(self.isInteger(str(myPressure))):
+            return False
+        elif int(myPressure) < 100 or int(myPressure) > 1100:
+            return False
+        return True
+    
+    def checkHorizon(self, myHorizon):
+        if str(myHorizon) != 'Artificial' and str(myHorizon) != 'Natural':
             return False
         return True
     

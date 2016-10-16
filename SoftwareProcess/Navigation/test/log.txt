@@ -682,3 +682,216 @@ LOG: 16-10-13 15:14:40-06:00 Start of sighting file:  abc.xml
 LOG: 16-10-13 15:14:40-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
 LOG: 16-10-13 15:14:40-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
 LOG: 16-10-13 15:14:40-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(no date).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(no body).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(no time).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(no observation).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(invalid date).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(invalid time).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(negative degree).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(negative minute).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(nondigital degree).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(nondigital minute).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(outbound degree).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(outbound minute).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(missing d).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(rounding error).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(tiny altitude).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(negative height).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(nondigital height).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(string temp).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(float temp).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(outbound temp).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(string pressure).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(float pressure).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(outbound pressure).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(other horizon).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc(nonlowcase horizon).xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:02:57-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:02:57-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:02:57-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:02:57-06:00 Start of log
+LOG: 16-10-16 17:02:57-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:02:57-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:02:57-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:02:57-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(no date).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(no body).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(no time).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(no observation).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(invalid date).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(invalid time).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(negative degree).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(negative minute).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(nondigital degree).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(nondigital minute).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(outbound degree).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(outbound minute).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(missing d).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(rounding error).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(tiny altitude).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(negative height).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(nondigital height).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(string temp).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(float temp).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(outbound temp).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(string pressure).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(float pressure).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(outbound pressure).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(other horizon).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc(nonlowcase horizon).xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:00-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:03:00-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:03:00-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:03:00-06:00 Start of log
+LOG: 16-10-16 17:03:00-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:00-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:03:00-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:03:00-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(no date).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(no body).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(no time).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(no observation).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(invalid date).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(invalid time).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(negative degree).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(negative minute).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(nondigital degree).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(nondigital minute).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(outbound degree).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(outbound minute).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(missing d).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(rounding error).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(tiny altitude).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(negative height).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(nondigital height).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(string temp).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(float temp).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(outbound temp).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(string pressure).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(float pressure).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(outbound pressure).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(other horizon).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc(nonlowcase horizon).xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:07-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:03:07-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:03:07-06:00 Ending of sighiting file:  abc.xml
+LOG: 16-10-16 17:03:07-06:00 Start of log
+LOG: 16-10-16 17:03:07-06:00 Start of sighting file:  abc.xml
+LOG: 16-10-16 17:03:07-06:00 Aldebaran	 2016-03-01 	 23:40:01 	 15d01.5 
+LOG: 16-10-16 17:03:07-06:00 Peacock	 2016-03-02 	 00:05:05 	 45d11.9 
+LOG: 16-10-16 17:03:07-06:00 Ending of sighiting file:  abc.xml
