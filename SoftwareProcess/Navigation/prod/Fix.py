@@ -150,7 +150,6 @@ class Fix():
         return self.adjustedAltitudes
     
     def writeLogFile(self, arr):
-#         f = open(self.logFileName, "w")
         for i in arr:
             myStr = "LOG: " + self.getDateTime() + " " + i[2] + "\t " + i[0] + " \t " + i[1] + " \t " + i[3] + " \n"
             self.logFile.write(myStr)
