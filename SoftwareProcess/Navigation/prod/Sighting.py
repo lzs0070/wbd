@@ -145,7 +145,8 @@ class Sighting():
         return True
     
     def checkHorizon(self, myHorizon):
-        if str(myHorizon) != 'Artificial' and str(myHorizon) != 'Natural':
+        if str(myHorizon) != 'Artificial' and str(myHorizon) != 'Natural' and str(myHorizon) != 'artificial' and str(myHorizon) != 'natural':
+#         if str(myHorizon) != 'Artificial' and str(myHorizon) != 'Natural':
             return False
         return True
     

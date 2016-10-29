@@ -17,24 +17,25 @@ class Fix():
     Read navigational sightings and to adjust those sightings based on atmospheric conditions.
     '''
 
-    def __init__(self, myLogFile = None):
+    def __init__(self, logFile = None):
         functionName = "Fix.__init__:  "
-        if(myLogFile == None):
-            myLogFile = "log.txt"
-        elif(not(isinstance(myLogFile, basestring))):
+        if(logFile == None):
+            logFile = "log.txt"
+        elif(not(isinstance(logFile, basestring))):
             raise ValueError(functionName + "The name should be a string.")
-        elif(myLogFile == ""):
+        elif(logFile == ""):
             raise ValueError(functionName + "The name should be a string having a length .GE. 1.")
         
         try:
-            f = open(myLogFile, 'a')
+            f = open(logFile, 'a')
             myStr = "LOG: " + self.getDateTime() + " Start of log\n"
             f.write(myStr)
+            f.close()
         except:
             raise ValueError(functionName + "File error.")
         
         self.logFile = f
-        self.logFileName = myLogFile
+        self.logFileName = logFile
         self.sightingFileName = None
 
     def getDateTime(self):
@@ -47,11 +48,13 @@ class Fix():
             raise ValueError(functionName + "There is no input.")
         elif (mySightingFile == ""):
             raise ValueError(functionName + "File name is empty.")
-        else:
+        try:
             pattern = re.compile(r'.\.xml\Z')
             match = pattern.search(mySightingFile)
             if not(match):
                 raise ValueError(functionName + "File name is invalid.")
+        except:
+            raise ValueError(functionName + "File name is invalid.")
         
         try:
             f = open(mySightingFile, 'r')
@@ -62,7 +65,9 @@ class Fix():
         self.sightingFileName = mySightingFile
         
         myStr = "LOG: " + self.getDateTime() + " Start of sighting file:  " + self.sightingFileName + "\n"
-        self.logFile.write(myStr)
+        f = open(self.logFileName, 'a')
+        f.write(myStr)
+        f.close()
         return mySightingFile
     
     def getSightings(self):
@@ -95,7 +100,7 @@ class Fix():
         observedAltitude = sighting.getObservation()
         horizon = sighting.getHorizon()
         
-        if horizon == 'Natural':
+        if horizon == 'Natural' or horizon == 'natural':
             dip = (-0.97 * math.sqrt(height)) / 60
         else:
             dip = 0
@@ -150,12 +155,13 @@ class Fix():
         return self.adjustedAltitudes
     
     def writeLogFile(self, arr):
+        f = open(self.logFileName, 'a')
         for i in arr:
             myStr = "LOG: " + self.getDateTime() + " " + i[2] + "\t " + i[0] + " \t " + i[1] + " \t " + i[3] + " \n"
-            self.logFile.write(myStr)
-        myStr = "LOG: " + self.getDateTime() + " Ending of sighiting file:  " + self.sightingFileName + "\n"
-        self.logFile.write(myStr)
-        self.logFile.close()
+            f.write(myStr)
+        myStr = "LOG: " + self.getDateTime() + " End of sighting file:  " + self.sightingFileName + "\n"
+        f.write(myStr)
+        f.close()
         
         
         
