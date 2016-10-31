@@ -184,30 +184,30 @@ class AngleTest(unittest.TestCase):
         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1]) 
         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())  
         
-#     def test400_040_ShouldSetAngleWithValidXYYOver360(self):
-#         anAngle = Angle.Angle()
-#         inputOutput = ["400d0.0", 400.0%360.0]
-#         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1])   
-#         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())                           
-#          
-#     def test400_050_ShouldSetAngleWithValidNegXYY(self):
-#         anAngle = Angle.Angle()
-#         inputOutput = ["-20d10.5", 360.0-(20.0 + 10.5/60.0)]
-#         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1]) 
-#         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees()) 
-#         
-#     def test400_060_ShouldSetAngleWithValidNegXYYOver360(self):
-#         anAngle = Angle.Angle()
-#         inputOutput = ["-700d0.0",-700.0%360.0]
-#         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1])   
-#         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())  
-#         
-#     def test400_070_ShouldSetAngleOnBoundary(self):
-#         anAngle = Angle.Angle()
-#         inputOutput = ["360d0.0",0.0]
-#         self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1]) 
-#         self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())    
-#         
+    def test400_040_ShouldSetAngleWithValidXYYOver360(self):
+        anAngle = Angle.Angle()
+        inputOutput = ["400d0.0", 400.0%360.0]
+        self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1])   
+        self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())                           
+         
+    def test400_050_ShouldSetAngleWithValidNegXYY(self):
+        anAngle = Angle.Angle()
+        inputOutput = ["-20d10.5", 360.0-(20.0 + 10.5/60.0)]
+        self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1]) 
+        self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees()) 
+        
+    def test400_060_ShouldSetAngleWithValidNegXYYOver360(self):
+        anAngle = Angle.Angle()
+        inputOutput = ["-700d0.0",-700.0%360.0]
+        self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1])   
+        self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())  
+        
+    def test400_070_ShouldSetAngleOnBoundary(self):
+        anAngle = Angle.Angle()
+        inputOutput = ["360d0.0",0.0]
+        self.assertAlmostEquals(anAngle.setDegreesAndMinutes(inputOutput[0]), inputOutput[1]) 
+        self.assertAlmostEquals(inputOutput[1], anAngle.getDegrees())    
+        
     def test400_070_ShouldSetAngleWithValid0YY(self):
         anAngle = Angle.Angle()
         inputOutput = ["0d10.5",10.5/60.0]
@@ -277,31 +277,6 @@ class AngleTest(unittest.TestCase):
             anAngle.setDegreesAndMinutes("10d")
         self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
         self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
-
-    def test400_980_ShouldRaiseExceptionOnOutboundDegree(self):
-        expectedDiag = self.className + "setDegreesAndMinutes:"
-        anAngle = Angle.Angle()
-        with self.assertRaises(ValueError) as context:
-            anAngle.setDegreesAndMinutes("90d45")
-        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
-#         self.assertAlmostEquals(originalValue, anAngle.getDegrees())  
-
-    def test400_990_ShouldRaiseExceptionOnOutboundMinute(self):
-        expectedDiag = self.className + "setDegreesAndMinutes:"
-        anAngle = Angle.Angle()
-        with self.assertRaises(ValueError) as context:
-            anAngle.setDegreesAndMinutes("10d60")
-        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
-
-    def test400_9100_ShouldRaiseExceptionOnNegativeD(self):
-        expectedDiag = self.className + "setDegreesAndMinutes:"
-        anAngle = Angle.Angle()
-        with self.assertRaises(ValueError) as context:
-            anAngle.setDegreesAndMinutes("-10d6")
-        self.assertEquals(expectedDiag, context.exception.args[0][0:len(expectedDiag)]) 
-
-
-
 
 
 #-----------------------------------------------------------------

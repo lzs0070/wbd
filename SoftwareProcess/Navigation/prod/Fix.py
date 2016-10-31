@@ -10,7 +10,8 @@ import re
 import xml.dom.minidom
 import math
 import time
-
+import LogFile
+import os
 
 class Fix():
     '''
@@ -26,63 +27,70 @@ class Fix():
         elif(logFile == ""):
             raise ValueError(functionName + "The name should be a string having a length .GE. 1.")
         
-        try:
-            f = open(logFile, 'a')
-            myStr = "LOG: " + self.getDateTime() + " Start of log\n"
-            f.write(myStr)
-            f.close()
-        except:
+        self.LogFile = LogFile.LogFile(logFile)
+        myStr = "LOG:\t" + self.getDateTime() + "\tLog file:\t" + self.LogFile.getFilePath() + '\n'
+        if self.LogFile.log(myStr) == False:
             raise ValueError(functionName + "File error.")
-        
-        self.logFile = f
+
         self.logFileName = logFile
         self.sightingFileName = None
+        self.ariesFileName = None
+        self.starFileName = None
 
     def getDateTime(self):
         myTime = time.strftime('%y-%m-%d %H:%M:%S', time.localtime(time.time())) + ('-' if time.timezone > 0 else '+') + time.strftime('%H:%M', time.gmtime(abs(time.timezone)))
         return myTime
     
-    def setSightingFile(self, mySightingFile = None):
+    def setSightingFile(self, sightingFile = None):
         functionName = "Fix.setSightingFile:  "
-        if (mySightingFile == None):
+        if (sightingFile == None):
             raise ValueError(functionName + "There is no input.")
-        elif (mySightingFile == ""):
+        elif (sightingFile == ""):
             raise ValueError(functionName + "File name is empty.")
         try:
             pattern = re.compile(r'.\.xml\Z')
-            match = pattern.search(mySightingFile)
+            match = pattern.search(sightingFile)
             if not(match):
                 raise ValueError(functionName + "File name is invalid.")
         except:
             raise ValueError(functionName + "File name is invalid.")
         
         try:
-            f = open(mySightingFile, 'r')
+            f = open(sightingFile, 'r')
             f.close()
         except:
             raise ValueError(functionName + "File cannot be opened.")
-             
-        self.sightingFileName = mySightingFile
+
+        ABSPATH = os.path.abspath(sightingFile)
+        myStr = "LOG:\t" + self.getDateTime() + "\tSighting file:\t" + ABSPATH + "\n"
+        self.LogFile.log(myStr)
         
-        myStr = "LOG: " + self.getDateTime() + " Start of sighting file:  " + self.sightingFileName + "\n"
-        f = open(self.logFileName, 'a')
-        f.write(myStr)
-        f.close()
-        return mySightingFile
+        self.sightingFileName = sightingFile
+        
+        return ABSPATH
     
     def getSightings(self):
         functionName = "Fix.getSightings:  "
         if (self.sightingFileName == None):
             raise ValueError(functionName + "No sighting file has been set.")
+        if (self.ariesFileName == None):
+            raise ValueError(functionName + "No aries file has been set.")
+        if (self.starFileName == None):
+            raise ValueError(functionName + "No star file has been set.")
 
         anSightings = Sightings.Sightings(self.sightingFileName)
         if(anSightings.setSightings() == False):
             raise ValueError(functionName + "Errors are encountered in the sighting file.")
 
-        self.sightings = anSightings.getSightings()
+        self.sightings = anSightings
+        self.sightings.setReferenceStatus(self.starFileName, self.ariesFileName)
         self.adjustedAltitudes = self.adjustAltitudes(anSightings.getSightings())
+        self.sightings.calculation(self.starFileName, self.ariesFileName)
         
         self.writeAltitude()
+        number = self.sightings.countErrors()
+        myStr = "LOG:\t" + self.getDateTime() + "\tSighting errors:\t" + str(number) + "\n"
+        self.LogFile.log(myStr)
         approximateLatitude = "0d0.0"
         approximateLongitude = "0d0.0"
         return (approximateLatitude, approximateLongitude) 
@@ -114,20 +122,23 @@ class Fix():
         return anAngle.getString()
 
     def writeAltitude(self):
-        sightings = self.sightings
+        sightings = self.sightings.getSightings()
         numSighting = len(sightings)
         adjustedAltitudeArr = []
         orderArr = []
         for i in range(0, numSighting):
             sighting = sightings[i]
-            adjustedAltitude = self.adjustAltitude(sighting)
-            adjustedAltitudeArr.append(adjustedAltitude)
-            elements = []
-            elements.append(sighting.getDate())
-            elements.append(sighting.getTime())
-            elements.append(sighting.getBody())
-            elements.append(self.adjustedAltitudes[i])
-            orderArr.append(elements)
+            if sighting.getValid() == True and sighting.getReference():
+                adjustedAltitude = self.adjustAltitude(sighting)
+                adjustedAltitudeArr.append(adjustedAltitude)
+                elements = []
+                elements.append(sighting.getDate())
+                elements.append(sighting.getTime())
+                elements.append(sighting.getBody())
+                elements.append(self.adjustedAltitudes[i])
+                elements.append(sighting.getLatitude())
+                elements.append(sighting.getLongitude())
+                orderArr.append(elements)
     
         sortedOrder = self.sort(orderArr)
         self.writeLogFile(sortedOrder)
@@ -157,11 +168,64 @@ class Fix():
     def writeLogFile(self, arr):
         f = open(self.logFileName, 'a')
         for i in arr:
-            myStr = "LOG: " + self.getDateTime() + " " + i[2] + "\t " + i[0] + " \t " + i[1] + " \t " + i[3] + " \n"
+            myStr = "LOG:\t" + self.getDateTime() + "\t" + i[2] + "\t" + i[0] + " \t " + i[1] + " \t " + i[3] + " \t " + i[4] + " \t " + i[5] + " \n"
             f.write(myStr)
-        myStr = "LOG: " + self.getDateTime() + " End of sighting file:  " + self.sightingFileName + "\n"
-        f.write(myStr)
+#         myStr = "LOG: " + self.getDateTime() + " End of sighting file:  " + self.sightingFileName + "\n"
+#         f.write(myStr)
         f.close()
+    
+    def setAriesFile(self, ariesFile = None):
+        functionName = "Fix.setAriesFile:"
+        if (ariesFile == None):
+            raise ValueError(functionName + "There is no input.")
+        elif (ariesFile == ".txt"):
+            raise ValueError(functionName + "File name is empty.")
+        try:
+            pattern = re.compile(r'.\.txt\Z')
+            match = pattern.search(ariesFile)
+            if not(match):
+                raise ValueError(functionName + "File name is invalid.")
+        except:
+            raise ValueError(functionName + "File name is invalid.")
         
+        try:
+            f = open(ariesFile, 'r')
+            f.close()
+        except:
+            raise ValueError(functionName + "File cannot be opened.")
         
+        ABSPATH = os.path.abspath(ariesFile)
+        myStr = "LOG:\t" + self.getDateTime() + "\tAries file:\t" + ABSPATH + "\n"
+        self.LogFile.log(myStr)
         
+        self.ariesFileName = ariesFile
+        
+        return ABSPATH
+    
+    def setStarFile(self, starFile = None):
+        functionName = "Fix.setStarFile:"
+        if (starFile == None):
+            raise ValueError(functionName + "There is no input.")
+        elif (starFile == ".txt"):
+            raise ValueError(functionName + "File name is empty.")
+        try:
+            pattern = re.compile(r'.\.txt\Z')
+            match = pattern.search(starFile)
+            if not(match):
+                raise ValueError(functionName + "File name is invalid.")
+        except:
+            raise ValueError(functionName + "File name is invalid.")
+        
+        try:
+            f = open(starFile, 'r')
+            f.close()
+        except:
+            raise ValueError(functionName + "File cannot be opened.")
+        
+        ABSPATH = os.path.abspath(starFile)
+        myStr = "LOG:\t" + self.getDateTime() + "\tStar file:\t" + ABSPATH + "\n"
+        self.LogFile.log(myStr)
+        
+        self.starFileName = starFile
+        
+        return ABSPATH

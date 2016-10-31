@@ -18,7 +18,8 @@ class Angle():
 
         if not(newStr.isdigit()):   #remove the influence of sign when judging whether myStr is digit
             return False
-        elif(type(eval(myStr)) == float or eval(myStr) < 0 or eval(myStr) >= 90):
+#         elif(type(eval(myStr)) == float or eval(myStr) < 0 or eval(myStr) >= 90):
+        elif(type(eval(myStr)) == float):
             return False
         return True    
             

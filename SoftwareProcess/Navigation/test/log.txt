@@ -1,0 +1,7 @@
+LOG:	16-10-30 23:43:49-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-10-30 23:43:49-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-10-30 23:43:49-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-10-30 23:43:49-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-10-30 23:43:50-06:00	Pollux	2017-04-14 	 23:50:14 	 15d01.5 	 27d59.1 	 84d33.4 
+LOG:	16-10-30 23:43:50-06:00	Sirius	2017-04-17 	 09:30:30 	 45d11.9 	 -16d44.5 	 247d06.2 
+LOG:	16-10-30 23:43:50-06:00	Sighting errors:	1
