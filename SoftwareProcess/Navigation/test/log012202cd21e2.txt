@@ -1,0 +1,6 @@
+LOG:	16-11-19 23:48:41-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log012202cd21e2.txt
+LOG:	16-11-19 23:48:41-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_300_ValidStarLatLonInterpolationRequired.xml
+LOG:	16-11-19 23:48:41-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Aries.txt
+LOG:	16-11-19 23:48:41-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\CA03_Valid_Stars.txt
+LOG:	16-11-19 23:48:41-06:00	Betelgeuse	2017-01-16 	 03:15:42 	 9d54.7 	 7d24.3 	 74d55.2 
+LOG:	16-11-19 23:48:41-06:00	Sighting errors:	0

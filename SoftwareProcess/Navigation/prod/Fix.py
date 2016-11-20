@@ -97,8 +97,11 @@ class Fix():
     
     def adjustAltitudes(self, sightings):
         adjustedAltitudes = []
-        for i in sightings:
-            adjustedAltitudes.append(self.adjustAltitude(i))
+        for i in range(0, len(sightings)):
+            if sightings[i].getValid() == True and sightings[i].getReference() == True:
+                adjustedAltitudes.append(self.adjustAltitude(sightings[i]))
+            else:
+                adjustedAltitudes.append([])
         return adjustedAltitudes
     
     def adjustAltitude(self, sighting):
@@ -128,7 +131,7 @@ class Fix():
         orderArr = []
         for i in range(0, numSighting):
             sighting = sightings[i]
-            if sighting.getValid() == True and sighting.getReference():
+            if sighting.getValid() == True and sighting.getReference() == True:
                 adjustedAltitude = self.adjustAltitude(sighting)
                 adjustedAltitudeArr.append(adjustedAltitude)
                 elements = []
