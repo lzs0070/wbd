@@ -126,7 +126,7 @@ class Fix():
             
         else:
             approAltitude = 'N' + approAltitude
-        myStr = "LOG:\t" + self.getDateTime() + "\tApproximate latitude:\t" + approAltitude + "\t" + self.sightings.getApproximateLongitude() + "\n"
+        myStr = "LOG:\t" + self.getDateTime() + "\tApproximate latitude:\t" + approAltitude + "\tApproximate longitude:\t" + self.sightings.getApproximateLongitude() + "\n"
         self.LogFile.log(myStr)
 #         approximateLatitude = "0d0.0"
 #         approximateLongitude = "0d0.0"

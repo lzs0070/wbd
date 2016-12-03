@@ -473,3 +473,102 @@ LOG:	16-12-02 20:02:50-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\Sof
 LOG:	16-12-02 20:02:50-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
 LOG:	16-12-02 20:02:50-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
 LOG:	16-12-02 20:02:50-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings2.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Rigil Kent.	 2017-03-24 	 23:41:56 	 35d08.1 	 -60d53.8 	 318d09.9 	 0d0.0 	 0d0.0 	 159d37.8 	 -833 
+LOG:	16-12-03 17:43:04-06:00	Acrux	 2017-03-24 	 23:42:06 	 48d33.9 	 -63d11.3 	 351d30.3 	 0d0.0 	 0d0.0 	 175d43.8 	 -1324 
+LOG:	16-12-03 17:43:04-06:00	Aldebaran	 2017-03-24 	 23:43:12 	 13d42.3 	 16d32.3 	 109d27.8 	 0d0.0 	 0d0.0 	 72d31.1 	 -1940 
+LOG:	16-12-03 17:43:04-06:00	Sighting errors:	0
+LOG:	16-12-03 17:43:04-06:00	Approximate latitude:	N25d18.5	Approximate longitude:	322d41.1
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings2.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Rigil Kent.	 2017-03-24 	 23:41:56 	 35d08.1 	 -60d53.8 	 318d09.9 	 S53d38.4 	 74d35.3 	 125d37.7 	 2159 
+LOG:	16-12-03 17:43:04-06:00	Acrux	 2017-03-24 	 23:42:06 	 48d33.9 	 -63d11.3 	 351d30.3 	 S53d38.4 	 74d35.3 	 132d48.3 	 434 
+LOG:	16-12-03 17:43:04-06:00	Aldebaran	 2017-03-24 	 23:43:12 	 13d42.3 	 16d32.3 	 109d27.8 	 S53d38.4 	 74d35.3 	 173d34.4 	 -3988 
+LOG:	16-12-03 17:43:04-06:00	Sighting errors:	0
+LOG:	16-12-03 17:43:04-06:00	Approximate latitude:	S13d28.0	Approximate longitude:	101d42.2
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings2.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Rigil Kent.	 2017-03-24 	 23:41:56 	 35d08.1 	 -60d53.8 	 318d09.9 	 S53d38.4 	 0d0.0 	 124d53.0 	 1894 
+LOG:	16-12-03 17:43:04-06:00	Acrux	 2017-03-24 	 23:42:06 	 48d33.9 	 -63d11.3 	 351d30.3 	 S53d38.4 	 0d0.0 	 158d34.9 	 1855 
+LOG:	16-12-03 17:43:04-06:00	Aldebaran	 2017-03-24 	 23:43:12 	 13d42.3 	 16d32.3 	 109d27.8 	 S53d38.4 	 0d0.0 	 95d35.4 	 -2307 
+LOG:	16-12-03 17:43:04-06:00	Sighting errors:	0
+LOG:	16-12-03 17:43:04-06:00	Approximate latitude:	N263d16.2	Approximate longitude:	358d55.1
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:04-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:04-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:04-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:04-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
+LOG:	16-12-03 17:43:05-06:00	Log file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\log.txt
+LOG:	16-12-03 17:43:05-06:00	Sighting file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\sightings.xml
+LOG:	16-12-03 17:43:05-06:00	Aries file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\aries.txt
+LOG:	16-12-03 17:43:05-06:00	Star file:	C:\Users\sunsuper\git\SoftwareProcess\SoftwareProcess\Navigation\test\stars.txt
