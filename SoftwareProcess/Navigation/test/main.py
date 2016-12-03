@@ -8,6 +8,7 @@ import re
 import time
 import datetime
 import numpy as np
+import string
 # from scipy import stats
 # import matplotlib.pyplot as plt
 
@@ -113,3 +114,37 @@ d2 = datetime.datetime(04, 12, 31)
 print (d2 - d1).days
 
 print int('09')
+
+str = 'ds1d204'
+position = str.index('d')
+print position
+
+str = '  08'
+print '***08'
+print str.isdigit()
+print int(str)
+
+str = '08.00'
+print str.isdigit()
+print string.atof(str)
+
+a = math.sin(math.pi/2)
+b = math.tan(math.pi/4)
+print a
+print b
+print "asin:"
+print math.asin(a)
+print 180*a/math.pi
+print math.sin(math.asin(a))
+
+a = 71136.64
+b = a%60
+print b
+print (a-b)/60
+
+a = eval('+035')
+print 'a='
+print a
+b = int('-035')
+print 'b='
+print b

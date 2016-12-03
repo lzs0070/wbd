@@ -11,19 +11,40 @@ class Angle():
         print("The degrees is" + self.degrees)
         
     def verifyDegrees(self, myStr):
+        '''
         if myStr[0] == '-' or myStr[0] == '+':
             newStr = myStr[1:len(myStr)]
         else:
             newStr = myStr
-
+        '''
+        
+        '''    
+        # remove leading '0'
+        p = 0
+        for i in range(0, len(newStr)):
+            if newStr[i] == '0':
+                p = p + 1
+            else:
+                break
+        newStr = newStr[p:len(newStr)]
+        '''
+        
+        '''
         if not(newStr.isdigit()):   #remove the influence of sign when judging whether myStr is digit
             return False
 #         elif(type(eval(myStr)) == float or eval(myStr) < 0 or eval(myStr) >= 90):
-        elif(type(eval(myStr)) == float):
+        elif(type(eval(newStr)) == float):
+            return False
+        '''
+        
+        try:
+            a = int(myStr)
+        except:
             return False
         return True    
             
     def verifyMinutes(self, myStr):
+        '''
         #remove the influence of sign when judging whether myStr is digit                 
         if myStr[0] == '-' or myStr[0] == '+':
             newStr = myStr[1:len(myStr)]
@@ -37,6 +58,11 @@ class Angle():
                 count = count + 1
             elif(not(newStr[i].isdigit())):
                 return 1
+        '''
+        try:
+            a = float(myStr)
+        except:
+            return 1
 
         '''
         if not(newStr.isdigit()):   
@@ -129,7 +155,23 @@ class Angle():
         
         return self.getDegrees()
     
-            
+    
+    def setMinutes(self, myMinutes = 0.0):
+        if(not(isinstance(myMinutes, int) or isinstance(myMinutes, float))):
+            #if myDegrees is not a number
+            raise ValueError("Angle.setMinutes: The input is not integer or float number!")
+        else:
+            tmp = myMinutes % 60
+            myDegree = myMinutes - tmp
+            myDegree = myDegree / 60
+            myDegree = int(myDegree % 360)
+            tmp = round(tmp, 1)
+            self.degrees = myDegree
+            self.minutes = tmp
+            #self.degrees = round(self.degrees, 1)
+        return self.getDegrees()
+    
+    
     def add(self, newAngle = None):
         if(newAngle == None):
             raise ValueError('Angle.add: The input is empty.')
@@ -184,3 +226,18 @@ class Angle():
         tmp = self.minutes/60
         tmp = self.degrees + tmp
         return tmp
+    
+    
+    def getMinutes(self):
+        tmp = self.degrees * 60
+        tmp = tmp + self.minutes
+        return tmp
+    
+    
+    def getRoundMinutes(self):
+        myMinutes = self.degrees * 60 + self.minutes
+        myMinutes = round(myMinutes)
+        
+        return myMinutes
+        
+        

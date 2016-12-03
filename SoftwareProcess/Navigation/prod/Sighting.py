@@ -11,6 +11,7 @@ import time
 import datetime
 import math
 from Navigation.test.main import latitude, longitude
+from numpy.core.umath import arcsin
 
 class Sighting():
 
@@ -21,8 +22,14 @@ class Sighting():
         self.starReference = None
         self.starDate = None
         self.ariesReference = None
-        self.latitude = None
-        self.longitude = None
+        self.geographicLatitude = None
+        self.geographicLongitude = None
+        self.LHA = None
+        self.correctedAltitude = None
+        self.distanceAdjustment = None
+        self.distanceAdjustmentArcMin = None
+        self.azimuthAdjustment = None
+        self.adjustedAltitude = None
         
     def parseSighting(self):
         try:
@@ -609,11 +616,11 @@ class Sighting():
         minute = myStr[p + 1 : len(myStr)]
         return minute
     
-    def getLatitude(self):
-        return self.latitude
+    def getGeographicLatitude(self):
+        return self.geographicLatitude
     
-    def getLongitude(self):
-        return self.longitude
+    def getGeographicLongitude(self):
+        return self.geographicLongitude
     
     def getMin(self, strTime):
         p = strTime.find(':')
@@ -634,7 +641,7 @@ class Sighting():
             second = second[1:len(second)]
         return second
     
-    def calculationGeographicalPosition(self, starFileName, ariesFileName):
+    def calculateGeographicalPosition(self, starFileName, ariesFileName):
         f1 = open(starFileName, 'r')
         lines = f1.readlines()
         lineStar = lines[self.starReference]
@@ -718,11 +725,183 @@ class Sighting():
 #         
 #         longitude = str(GHAObservation_degree) + 'd' + str(GHAObservation_minute)
         
-        self.latitude = latitude
-        self.longitude = Angle5.getString()
+        self.geographicLatitude = latitude
+        self.geographicLongitude = Angle5.getString()
+        
+    
+    def calculateLHA(self, assumedLongitude):
+        angleAssumedLongitude = Angle.Angle()
+        angleAssumedLongitude.setDegreesAndMinutes(assumedLongitude)
+        angleGeographicLongitude = Angle.Angle()
+        angleGeographicLongitude.setDegreesAndMinutes(self.getGeographicLongitude())
+        
+#         a = angleGeographicLongitude.subtract(angleAssumedLongitude)
+        a = angleGeographicLongitude.add(angleAssumedLongitude)
+        
+        self.LHA = angleGeographicLongitude.getString()
+    
+    
+    def getLHA(self):
+        return self.LHA
+    
+    
+    def calculateCorrectedAltitude(self, assumedLatitude):
+        angleGeographicLatitude = Angle.Angle()
+        angleAssumedLatitude = Angle.Angle()
+        angleLHA = Angle.Angle()
+        
+        angleGeographicLatitude.setDegreesAndMinutes(self.getGeographicLatitude())
+        angleAssumedLatitude.setDegreesAndMinutes(assumedLatitude)
+        angleLHA.setDegreesAndMinutes(self.getLHA())
+        
+        radianGeographicLatitude = self.DtoR(angleGeographicLatitude.getDegrees())
+        radianAssumedLatitude = self.DtoR(angleAssumedLatitude.getDegrees())
+        radianLHA = self.DtoR(angleLHA.getDegrees())
+        
+        
+        sinlat1 = math.sin(radianGeographicLatitude)
+        sinlat2 = math.sin(radianAssumedLatitude)
+        sinlat = sinlat1*sinlat2
+        coslat1 = math.cos(radianGeographicLatitude)
+        coslat2 = math.cos(radianAssumedLatitude)
+        cosLHA = math.cos(radianLHA)
+        coslat = coslat1*coslat2*cosLHA
+        self.intermediateDistance = sinlat + coslat
+        
+#         radianCorrectedAltitude = math.asin(math.sin(radianGeographicLatitude) * math.sin(radianAssumedLatitude) + 
+#                                    math.cos(radianGeographicLatitude) * math.cos(radianAssumedLatitude) * math.cos(radianLHA))
+        self.correctedAltitude = math.asin(self.intermediateDistance)
+        
+#         angleCorrectedAltitude = Angle.Angle()
+#         angleCorrectedAltitude.setDegrees(self.RtoD(radianCorrectedAltitude))
+#         self.correctedAltitude = angleCorrectedAltitude.getString()
+#         
+#         self.correctedAltitude = radianCorrectedAltitude
         
         a = 1
         
         
+    def getCorrectedAltitude(self):
+        return self.correctedAltitude
+    
+    
+    def calculateDistanceAdjustment(self):
+        angleAdjustedAltitude = Angle.Angle()
+        angleCorrectedAltitude = Angle.Angle()
+        
+        angleAdjustedAltitude.setDegreesAndMinutes(self.adjustedAltitude)
+        angleCorrectedAltitude.setDegrees(self.RtoD(self.correctedAltitude))
+        
+        self.distanceAdjustment = angleCorrectedAltitude.getDegrees() - angleAdjustedAltitude.getDegrees()
+        self.distanceAdjustment = self.RtoD(self.correctedAltitude) - angleAdjustedAltitude.getDegrees()
+        self.distanceAdjustmentArcMin = int(round(self.distanceAdjustment*60))
+        
+        b = 1
+    
+    
+    def getDistanceAdjustment(self):
+        return self.distanceAdjustment
+        
+    
+    def getDistanceAdjustmentArcMin(self):
+        return self.distanceAdjustmentArcMin
+    
+        
+    def calculateAzimuthAdjustment(self, assumedLatitude):
+        angleGeographicLatitude = Angle.Angle()
+        angleAssumedLatitude = Angle.Angle()
+        angleDistanceAdjustment = Angle.Angle()
+        angleCorrectedAltitude = Angle.Angle()
+        angleTemp = Angle.Angle()
+        
+        angleGeographicLatitude.setDegreesAndMinutes(self.geographicLatitude)
+        angleAssumedLatitude.setDegreesAndMinutes(assumedLatitude)
+        angleDistanceAdjustment.setDegrees(self.distanceAdjustment)
+#         angleCorrectedAltitude.setDegreesAndMinutes(self.correctedAltitude)
+        angleTemp.setDegreesAndMinutes('-33d37.8')
+        
+        radianGeographicLatitude = self.DtoR(angleGeographicLatitude.getDegrees())
+        radianAssumedLatitude = self.DtoR(angleAssumedLatitude.getDegrees())
+        radianDistanceAdjustment = self.DtoR(angleDistanceAdjustment.getDegrees())
+#         radianCorrectedAltitude = self.DtoR(angleCorrectedAltitude.getDegrees())
+        radianCorrectedAltitude = self.correctedAltitude
+        radianTemp = self.DtoR(angleTemp.getDegrees())
+        
+        sinlat1 = math.sin(radianGeographicLatitude)
+        sinlat2 = math.sin(radianAssumedLatitude)
+        numerator = sinlat1 - sinlat2*self.intermediateDistance
+        coslat1 = math.cos(radianAssumedLatitude)
+        coslat2 = math.cos(radianCorrectedAltitude)
+        denominator = coslat1 * coslat2
+        intermediaAzimuth = numerator/denominator
+        
+        radianAzimuthAdjustment = math.acos(intermediaAzimuth)
+        
+#         radianAzimuthAdjustment = math.acos((math.sin(radianGeographicLatitude) - 
+#                                              math.sin(radianAssumedLatitude) * math.sin(radianDistanceAdjustment))/
+#                                             (math.cos(radianAssumedLatitude) * math.cos(radianDistanceAdjustment)))
+#         radianAzimuthAdjustment = math.acos((math.sin(radianGeographicLatitude) - 
+#                                              math.sin(radianAssumedLatitude) * math.sin(174))/
+#                                             (math.cos(radianAssumedLatitude) * math.cos(174)))  
+#         radianAzimuthAdjustment = math.acos((math.sin(radianGeographicLatitude) - 
+#                                             math.sin(radianAssumedLatitude) * self.intermediateDistance)/
+#                                             (math.cos(radianAssumedLatitude) * math.cos(radianCorrectedAltitude)))
+#       
+        angleAzimuthAdjustment = Angle.Angle()
+        angleAzimuthAdjustment.setDegrees(self.RtoD(radianAzimuthAdjustment))
+        self.azimuthAdjustment = angleAzimuthAdjustment.getString()
+        a = 1
+    
+    def getAzimuthAdjustment(self):
+        return self.azimuthAdjustment
+    
+    
+    def getCosAzimuth(self):
+        angleAzimuth = Angle.Angle()
+        angleAzimuth.setDegreesAndMinutes(self.getAzimuthAdjustment())
+        radianAzimuth = math.cos(self.DtoR(angleAzimuth.getDegrees()))
+        return radianAzimuth
+    
+    
+    def getSinAzimuth(self):
+        angleAzimuth = Angle.Angle()
+        angleAzimuth.setDegreesAndMinutes(self.getAzimuthAdjustment())
+        radianAzimuth = math.sin(self.DtoR(angleAzimuth.getDegrees()))
+        return radianAzimuth
+    
+        
+    def DtoR(self, degree):
+        return math.pi*degree/180
+    
+    def RtoD(self, radian):
+        return 180*radian/math.pi
+    
+    
+    def setAdjustedAltitude(self):
+        height = float(self.getHeight())
+        pressure = float(self.getPressure())
+        temperature = float(self.getTemperature())
+        observedAltitude = self.getObservation()
+        horizon = self.getHorizon()
+        
+        if horizon == 'Natural' or horizon == 'natural':
+            dip = (-0.97 * math.sqrt(height)) / 60
+        else:
+            dip = 0
+        c_temp = (temperature - 32)/1.8
+        anAngle = Angle.Angle()
+        anAngle.setDegreesAndMinutes(observedAltitude)
+        refrection = (-0.00452 * pressure)/(273 + c_temp)/(math.tan(anAngle.getDegrees()*math.pi/180))
+        adjustedAltitude = anAngle.getDegrees() + dip + refrection
+#         adjustedAltitude = round(adjustedAltitude, 1)
+        anAngle.setDegrees(adjustedAltitude)
+        self.adjustedAltitude = anAngle.getString()
+        return self.adjustedAltitude
+    
+    def getAdjustedAltitude(self):
+        return self.adjustedAltitude
         
         
+        
+        
+    
