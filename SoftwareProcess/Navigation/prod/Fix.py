@@ -130,7 +130,7 @@ class Fix():
         self.LogFile.log(myStr)
 #         approximateLatitude = "0d0.0"
 #         approximateLongitude = "0d0.0"
-        return (myPrefix + self.sightings.getApproximateLatitude(), self.sightings.getApproximateLongitude()) 
+        return (approAltitude, self.sightings.getApproximateLongitude()) 
     
 #     def adjustAltitudes(self, sightings):
 #         adjustedAltitudes = []
